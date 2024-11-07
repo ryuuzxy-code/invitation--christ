@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Natal Persekutuan Pelajar Kristen</title>
+    <style>
+        /* Reset gaya dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Gaya Umum */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f2ebe3; /* Warna krem muda untuk latar */
+            color: #4a2c2a; /* Warna cokelat */
+            padding: 10px;
+            position: relative;
+            overflow: hidden;
+            flex-direction: column; /* Mengubah arah flex menjadi kolom */
+        }
+
+        /* Kartu Undangan */
+        .invitation-card {
+            width: 100%;
+            max-width: 500px;
+            background-color: #8c6d62; /* Warna cokelat lembut untuk kartu */
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+            z-index: 10;
+        }
+
+        /* Countdown */
+        .countdown {
+            font-size: 24px;
+            color: #f7e4d2;
+            margin: 20px 0;
+        }
+
+        /* Tombol Toggle Musik */
+        .music-toggle {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: #8c6d62;
+            color: #f7e4d2;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 20;
+            transition: background-color 0.3s ease;
+        }
+
+        .music-toggle:hover {
+            background-color: #7b5d4e;
+        }
+
+        /* Pohon Natal di Latar Belakang */
+        .tree-animation {
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 120px;
+            height: auto;
+            opacity: 0.3;
+            animation: sway 4s infinite ease-in-out alternate;
+            z-index: 1;
+        }
+
+        .tree-animation-right {
+            left: auto;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        /* Animasi Goyangan Pohon Natal */
+        @keyframes sway {
+            0% { transform: translateY(0px) rotate(-2deg); }
+            100% { transform: translateY(10px) rotate(2deg); }
+        }
+
+        /* Header Undangan */
+        .invitation-card h1 {
+            font-size: 36px;
+            font-family: 'Brush Script MT', cursive;
+            color: #f7e4d2;
+            margin-bottom: 10px;
+        }
+
+        .invitation-card h2 {
+            font-size: 16px;
+            font-weight: normal;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        /* Dekorasi Garis */
+        .line {
+            width: 80%;
+            height: 1px;
+            background-color: #f7e4d2;
+            margin: 0 auto 20px;
+        }
+
+        /* Teks Detail Acara */
+        .event-details {
+            font-size : 14px;
+            color: #f7e4d2;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        /* Gaya Tombol Gabung Sekarang */
+        .join-button {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 20px;
+            color: #8c6d62;
+            background-color: #f7e4d2;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .join-button:hover {
+            background-color: #e6d4c0;
+        }
+
+        /* Gaya Footer */
+        .footer {
+            font-size: 14px;
+            color: #f7e4d2;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .footer div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Ikon */
+        .icon {
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+        }
+
+        /* Animasi Salju */
+        .snowflake {
+            position: absolute;
+            color: #ffffff;
+            font-size: 20px;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            top: -10%;
+        }
+
+        /* Animasi Jatuh Salju */
+        @keyframes fall {
+            0% {
+                transform: translateY(0px);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Menambahkan salju di kiri dan kanan secara acak */
+        .snowflake:nth-child(1) { left: 5%; animation-duration: 7s; animation-delay: 0s; }
+        .snowflake:nth-child(2) { left: 15%; animation-duration: 6s; animation-delay: 2s; }
+        .snowflake:nth-child(3) { left: 25%; animation-duration: 8s; animation-delay: 4s; }
+        .snowflake:nth-child(4) { left: 35%; animation-duration: 5s; animation-delay: 1s; }
+        .snowflake:nth-child(5) { left: 45%; animation-duration: 7s; animation-delay: 3s; }
+        .snowflake:nth-child(6) { left: 55%; animation-duration: 6s; animation-delay: 2s; }
+        .snowflake:nth-child(7) { left: 65%; animation-duration: 5s; animation-delay: 1s; }
+        .snowflake:nth-child(8) { left: 75%; animation-duration: 8s; animation-delay: 3s; }
+        .snowflake:nth-child(9) { left: 85%; animation-duration: 7s; animation-delay: 0s; }
+        .snowflake:nth-child(10) { left: 95%; animation-duration: 6s; animation-delay: 4s; }
+
+        /* Media Query untuk Responsif */
+        @media (max-width: 480px) {
+            .invitation-card {
+                padding: 15px;
+            }
+            .invitation-card h1 {
+                font-size: 24px;
+            }
+            .invitation-card h2 {
+                font-size: 14px;
+            }
+            .event-details {
+                font-size: 12px;
+            }
+            .join-button {
+                font-size: 14px;
+                padding: 10px 18px;
+            }
+            .footer {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Backsound -->
+<audio id="myAudio" src="Natal Di Hatiku - Maria Shandi (#MariAkustik) - Maria Shandi (youtube).mp3" type="audio/mp4" loop>
+    Your browser does not support the audio element.
+</audio>
+
+<!-- Pohon Natal Animasi di Belakang Kartu -->
+<img src="hiasan.png" alt="Pohon Natal" class="tree-animation">
+<img src="hiasan.png" alt="Pohon Natal" class="tree-animation tree-animation-right">
+
+<div class="invitation-card">
+    <h1>Natal</h1>
+    <h2>Undangan Natal</h2>
+    <div class="line"></div>
+    <p class ="event-details">
+        Mari rayakan hari Natal yang indah ini bersama kami. Kami mengundang seluruh keluarga besar untuk hadir dalam acara ini dan merasakan sukacita serta kebersamaan yang penuh makna di malam Natal.
+        <br><br>
+        <strong>05 Desember 2024</strong><br>
+        Pukul 06:00 WITA<br>
+        Gereja Toraja Moria Palu
+    </p>
+
+    <div class="countdown" id="countdown"></div>
+
+    <a href="https://www.instagram.com/ppksmk3palu/?locale=id-ID" class="join-button">Gabung Sekarang</a>
+
+    <div class="footer">
+        <div>
+            <span>PPK SMKN 3 PALU</span>
+        </div>
+        <div>
+            <span>&hearts; Panitia Natal</span>
+        </div>
+    </div>
+
+    <!-- Salju Kiri dan Kanan -->
+    <div class="snowflake"> ❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+</div>
+
+<script>
+var lagu = document.getElementById("myAudio"); 
+
+var isPlaying = true;
+
+function playAudio() { 
+    lagu.play(); 
+}   
+
+function togglePlay() {
+    if (isPlaying) {
+        lagu.pause();
+        document.getElementById("musicToggle").innerText = "Putar Musik";
+    } else {
+        lagu.play();
+        document.getElementById("musicToggle").innerText = "Pause Musik";
+    }
+}
+
+lagu.onplaying = function() {
+    isPlaying = true;
+};
+
+lagu.onpause = function() {
+    isPlaying = false;
+};
+
+lagu.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+
+// Countdown
+var countdownDate = new Date("December 5, 2024 00:00:00").getTime();
+var countdownElement = document.getElementById("countdown");
+
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countdownDate - now;
+
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownElement.innerHTML = days + " Hari " + hours + " Jam " + minutes + " Menit " + seconds + " Detik ";
+
+    if (distance < 0) {
+        clearInterval(x);
+        countdownElement.innerHTML = "Waktu Habis!";
+    }
+}, 1000);
+
+// Event listener untuk tombol toggle musik
+document.getElementById("musicToggle").addEventListener("click", togglePlay);
+</script>
+</body>
+</html>
